@@ -35,6 +35,14 @@ Route::group(['middleware' => ['web', 'auth', 'permission'] ], function () {
   Route::get('dashboard','HomeController@dashboard')->name('home.dashboard');
 
   Route::get('/home', 'HomeController@index')->name('home');
+
+  Route::resource('surat-keluar','KeluarController');
+  Route::resource('surat-masuk','MasukController');
+  Route::resource('arsip','ArsipController');
+  Route::resource('arsip-surat','ArsipSuratController');
+  Route::resource('disposisi','DisposisiController');
+  Route::resource('lampiran','LampiranController');
 });
 
 Route::get('img/{type}/{file_id}','imgController@image');
+Route::get('surat/{type}/{id}','imgController@dokumen');

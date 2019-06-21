@@ -19,7 +19,7 @@ class CreateSuratsTable extends Migration
             $table->date('tanggal_surat');
             $table->string('perihal');
             $table->string('lampiran');
-            $table->string('file');
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }
