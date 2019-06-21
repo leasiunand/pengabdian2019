@@ -41,6 +41,23 @@
                 </ul>
               </li>
             @endif
+            @if (Sentinel::getUser()->hasAnyAccess(['surat-keluar.index']))
+              <li class="pcoded-hasmenu " dropdown-icon="style1" subitem-icon="style1">
+                <a href="javascript:void(0)">
+                    <span class="pcoded-micon"><i class="icofont icofont-letter"></i></span>
+                    <span class="pcoded-mtext">Surat</span>
+                </a>
+                <ul class="pcoded-submenu">
+                    @if (Sentinel::getUser()->hasAccess(['surat-keluar.index']))
+                      <li class="">
+                          <a href="{{route('surat-keluar.index')}}">
+                              <span class="pcoded-micon"><i class="icofont icofont-boy"></i></span><span class="pcoded-mtext">Surat Keluar</span>
+                          </a>
+                      </li>
+                    @endif
+                </ul>
+              </li>
+            @endif
           </ul>
         @endif
     </div>

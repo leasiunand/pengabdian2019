@@ -20,7 +20,7 @@ class CreateMasuksTable extends Migration
             $table->string('pengirim');
             $table->timestamps();
 
-            $table->foreign('surat_id')->references('id')->on('surats')->onUpdate('cascade');
+            $table->foreign('surat_id')->references('id')->on('surats')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
         });
     }

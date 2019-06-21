@@ -27,11 +27,11 @@ class surat extends Model
       'file',
     ];
 
-    protected $rules = [
+    private $rules = [
         'nomor' => 'required|unique:surats,nomor',
         'tanggal_surat' => 'required',
         'perihal' => 'required',
         'lampiran' => 'required',
-        'file' => 'required',
+        'file' => 'mimes:pdf',
     ];
 }

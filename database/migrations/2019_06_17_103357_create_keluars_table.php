@@ -16,10 +16,10 @@ class CreateKeluarsTable extends Migration
         Schema::create('keluars', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('surat_id')->unsigned();
-            $table->string('pengirim');
+            $table->string('penerima');
             $table->timestamps();
 
-            $table->foreign('surat_id')->references('id')->on('surats')->onUpdate('cascade');
+            $table->foreign('surat_id')->references('id')->on('surats')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
