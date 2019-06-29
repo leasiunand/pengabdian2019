@@ -36,7 +36,7 @@ class masuk extends Model
 
     public function penerima($value='')
     {
-        return $this->hasOne(user::class,'id','user_id');
+        return $this->hasOne('App\User','id','user_id');
     }
 
 }
