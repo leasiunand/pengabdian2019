@@ -48,6 +48,13 @@
                     <span class="pcoded-mtext">Surat</span>
                 </a>
                 <ul class="pcoded-submenu">
+                    @if (Sentinel::getUser()->hasAccess(['surat-masuk.index']))
+                      <li class="">
+                          <a href="{{route('surat-masuk.index')}}">
+                              <span class="pcoded-micon"><i class="icofont icofont-boy"></i></span><span class="pcoded-mtext">Surat Masuk</span>
+                          </a>
+                      </li>
+                    @endif
                     @if (Sentinel::getUser()->hasAccess(['surat-keluar.index']))
                       <li class="">
                           <a href="{{route('surat-keluar.index')}}">

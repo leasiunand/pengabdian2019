@@ -34,4 +34,6 @@ class surat extends Model
         'lampiran' => 'required',
         'file' => 'mimes:pdf',
     ];
+
+    
 }
