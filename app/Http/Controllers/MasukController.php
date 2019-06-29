@@ -77,14 +77,84 @@ class MasukController extends Controller
                 toast()->error('Terjadi Eror Saat Menyimpan Data', 'Gagal');
                 return redirect()->back();
             }   
-           
           }
-
-    
         } catch (\Exception $e) {
           toast()->error($e, 'Eror');
           toast()->error('Terjadi Eror Saat Menyimpan Data', 'Gagal');
           return redirect()->back();
         }
     }
+
+    public function edit($id){
+      $surat_masuk = masuk::select('*')->join('surats','masuks.surat_id','=','surats.id')->where('masuks.id',$id)->first();
+      return view('backend.masuk.edit',compact('surat_masuk'));
+    }
+
+    public function update($id,Request $request){
+      
+      $request->validate([
+        'nomor' => 'required|unique:surats,nomor',
+        'tanggal_surat' => 'required',
+        'perihal' => 'required',
+        'lampiran' => 'required',
+        'file' => 'mimes:pdf',
+        'pengirim' => 'required',
+      ]);
+
+      try {
+        $masuk = masuk::find($id);
+        $surat = surat::find($masuk->surat_id);
+        $data = $request->all();
+
+        //simpan file surat mulai
+        $path = 'surat-masuk';
+        $oldfile = $surat->file;
+        $filename = null;
+        if ($request->hasFile('file') && $request->file->isValid()) {
+            $fileext = $request->file->extension();
+            $filename = uniqid('surat-masuk-'.$request->nomor.'-').'.'.$fileext;
+            //Real File
+            $filepath = $request->file('file')->storeAs($path, $filename, 'local');
+            //Avatar File
+            $realpath = storage_path('app/'.$filepath);
+            $data['file'] = $filename;
+        }
+        //simpan file surat selesai
+
+        $surat->update($data);
+        $masuk->update($data);
+
+        if ($request->hasFile('file') && $request->file->isValid()) {
+          if ($filename != $oldfile) {
+            //kalau file yang lama dan yang baru namanya tidak sama, maka akan melakukan
+              File::delete(storage_path('app'.'/'. $path . '/' . $oldfile));
+            }
+        }
+
+        toast()->success('Berhasil Merubah Data Surat Masuk', 'Berhasil');
+        return redirect()->route('surat-masuk.index');
+    } catch (\Exception $e) {
+        toast()->error($e, 'Eror');
+        toast()->error('Terjadi Eror Saat Merubah Data', 'Gagal');
+        return redirect()->back();
+    }
+    }
+
+    public function destroy($id)
+    {
+        try {
+          $masuk = masuk::find($id);
+          $path = 'surat-masuk';
+          $surat = surat::find($masuk->surat_id);
+          File::delete(storage_path('app'.'/'. $path . '/' . $surat->file));
+          $surat->delete();
+          toast()->success('Berhasil Menghapus Data Surat Masuk', 'Berhasil');
+          return redirect()->back();
+        } catch (\Exception $e) {
+          toast()->error($e, 'Eror');
+          toast()->error('Terjadi Eror Saat Menghapus Data', 'Gagal');
+          return redirect()->back();
+        }
+    }
+
 }

@@ -137,6 +137,5 @@ class KeluarController extends Controller
           toast()->error('Terjadi Eror Saat Menghapus Data', 'Gagal');
           return redirect()->back();
         }
-
     }
 }
