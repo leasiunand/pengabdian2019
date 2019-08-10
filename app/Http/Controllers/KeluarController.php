@@ -21,6 +21,12 @@ class KeluarController extends Controller
         return view('backend.keluar.create');
     }
 
+    public function show($id)
+    {
+        $keluar = keluar::find($id);
+        return view('backend.keluar.show',compact('keluar'));
+    }
+
     public function store(Request $request)
     {
 

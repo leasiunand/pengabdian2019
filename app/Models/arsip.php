@@ -34,11 +34,11 @@ class arsip extends Model
 
     public function arsip($value='')
     {
-        return $this->hasOne(surat::class,'id','arsip_id');
+        return $this->hasOne(arsip::class,'id','arsip_id');
     }
 
     public function user($value='')
     {
-        return $this->hasOne(user::class,'id','user_id');
+        return $this->hasOne('App\user','id','user_id');
     }
 }

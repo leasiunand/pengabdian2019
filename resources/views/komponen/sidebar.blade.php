@@ -58,6 +58,11 @@
                 </ul>
               </li>
             @endif
+            <li class="">
+              <a href="{{route('arsip.index')}}">
+                  <span class="pcoded-micon"><i class="icofont icofont-dashboard-web"></i></span><span class="pcoded-mtext">Arsip</span>
+              </a>
+            </li>
           </ul>
         @endif
     </div>

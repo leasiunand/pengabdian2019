@@ -1,11 +1,11 @@
 @extends('layouts.blank')
 
 @section('title')
-  List Surat Keluar
+  List Arsip
 @stop
 
 @section('title-breadcrumb')
-  List Surat Keluar
+  List Arsip
 @stop
 
 @section('keterangan-breadcrumb')
@@ -13,7 +13,7 @@
 @stop
 
 @section('icon-breadcrumb')
-    <li class="breadcrumb-item"><a href="{{route('surat-keluar.index')}}">Surat Keluar</a></li>
+    <li class="breadcrumb-item"><a href="{{route('arsip.index')}}">Arsip</a></li>
 @stop
 
 @section('content')
@@ -21,30 +21,28 @@
   <div class="card">
     <div class="card-block">
         <div class="dt-responsive table-responsive">
-            <table id="tblkeluar" class="table table-striped table-bordered nowrap" style="width:100%">
+            <table id="tblarsip" class="table table-striped table-bordered nowrap" style="width:100%">
                 <thead>
                     <tr>
-                        <th>No Surat</th>
-                        <th>Tanggal</th>
-                        <th>Perihal</th>
-                        <th>Lampiran</th>
-                        <th>Penerima</th>
+                        <th>Nomor Arsip</th>
+                        <th>Nama</th>
+                        <th>Pemilik</th>
+                        <th>Master</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                  @foreach($surat_keluars as $keluar)
+                  @foreach($arsips as $arsip)
                     <tr>
-                      <td>{{$keluar->surat->nomor}}</td>
-                      <td>{{$keluar->surat->tanggal_surat->format('d M Y')}}</td>
-                      <td>{{$keluar->surat->perihal}}</td>
-                      <td>{{$keluar->surat->lampiran}}</td>
-                      <td>{{$keluar->penerima}}</td>
+                      <td>{{$arsip->id}}</td>
+                      <td>{{$arsip->nama}}</td>
+                      <td>{{$arsip->user->nama}}</td>
+                      <td>{{$arsip->arsip ? $arsip->arsip->nama :  'Master'}}</td>
+                      <td>{{$arsip->status}}</td>
                       <td class="text-right">
-                        <a target="_blank" href="{{url('surat/keluar/'.$keluar->surat->file)}}" class="btn btn-primary btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Edit"><i class="ion-android-download"></i> Download</a>
-                        <a href="{{route('surat-keluar.edit',$keluar->id)}}" class="btn btn-primary btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Edit"><i class="ion-edit"></i> Edit</a>
-                        <a href="{{route('surat-keluar.show',$keluar->id)}}" class="btn btn-primary btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Edit"><i class="ion-eye"></i> Detail</a>
-                        {!! Form::open(['method'=>'DELETE', 'route' => ['surat-keluar.destroy',$keluar->id], 'style' => 'display:inline']) !!}
+                        <a href="{{route('arsip.edit',$arsip->id)}}" class="btn btn-primary btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Edit"><i class="ion-edit"></i> Edit</a>
+                        {!! Form::open(['method'=>'DELETE', 'route' => ['arsip.destroy',$arsip->id], 'style' => 'display:inline']) !!}
                           <button onclick="confirmdelete()" type="submit" class="btn btn-danger btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Hapus"><i class="ion-trash-b"></i> Hapus</button>
                         {!! Form::close() !!}
                       </td>
@@ -62,25 +60,25 @@
 <script type="text/javascript">
 
     function confirmdelete() {
-      if(confirm("Yakin Ingin Menghapus Surat Keluar Ini?")==true){
+      if(confirm("Yakin Ingin Menghapus Arsip Ini?")==true){
         return true;
       }else{
         event.preventDefault();
       }
     }
 
-    $('#tblkeluar').DataTable(
+    $('#tblarsip').DataTable(
       {
       "info":     false,
       dom: 'Bfrtip',
       buttons: [
       @if (Sentinel::getUser()->hasAccess(['role.create']))
         {
-            text: 'Tambah Surat Keluar',
+            text: 'Tambah Arsip',
             className: 'btn-success',
             action: function(e, dt, node, config)
             {
-              window.location.assign('{{route("surat-keluar.create")}}');
+              window.location.assign('{{route("arsip.create")}}');
             }
         },
       @endif
