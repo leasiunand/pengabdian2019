@@ -22,6 +22,14 @@
     <div class="card-block">
       {{ Form::model($arsip, array('method' => 'PATCH', 'url' => route('arsip.update', $arsip->id), 'class' => 'form-horizontal form-label-left', 'files' => true,'data-parsley-validate','id'=>'demo-form2')) }}
 
+          <div class="form-group row">
+              <label class="col-sm-2 social-label b-none p-t-0">Arsip Master</label>
+              <div class="col-sm-10">
+                  {!! Form::select('arsip_id', $master ,null,['class' => 'js-example-basic-single', 'placeholder'=>'Arsip Master']) !!}
+                  <span class="messages popover-valid"></span>
+              </div>
+          </div>
+
           @include('backend.arsip._form')
 
           <div class="row">

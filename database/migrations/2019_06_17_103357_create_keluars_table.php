@@ -15,7 +15,7 @@ class CreateKeluarsTable extends Migration
     {
         Schema::create('keluars', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('surat_id')->unsigned();
+            $table->integer('surat_id')->unsigned()->unique();
             $table->string('penerima');
             $table->timestamps();
 

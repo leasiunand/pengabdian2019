@@ -27,7 +27,6 @@
                         <th>No Surat</th>
                         <th>Tanggal</th>
                         <th>Perihal</th>
-                        <th>Lampiran</th>
                         <th>Penerima</th>
                         <th>Action</th>
                     </tr>
@@ -38,15 +37,20 @@
                       <td>{{$keluar->surat->nomor}}</td>
                       <td>{{$keluar->surat->tanggal_surat->format('d M Y')}}</td>
                       <td>{{$keluar->surat->perihal}}</td>
-                      <td>{{$keluar->surat->lampiran}}</td>
                       <td>{{$keluar->penerima}}</td>
                       <td class="text-right">
                         <a target="_blank" href="{{url('surat/keluar/'.$keluar->surat->file)}}" class="btn btn-primary btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Edit"><i class="ion-android-download"></i> Download</a>
+                        @if (Sentinel::getUser()->hasAccess(['surat-keluar.edit']))
                         <a href="{{route('surat-keluar.edit',$keluar->id)}}" class="btn btn-primary btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Edit"><i class="ion-edit"></i> Edit</a>
+                        @endif
+                        @if (Sentinel::getUser()->hasAccess(['surat-keluar.show']))
                         <a href="{{route('surat-keluar.show',$keluar->id)}}" class="btn btn-primary btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Edit"><i class="ion-eye"></i> Detail</a>
+                        @endif
+                        @if (Sentinel::getUser()->hasAccess(['surat-keluar.destroy']))
                         {!! Form::open(['method'=>'DELETE', 'route' => ['surat-keluar.destroy',$keluar->id], 'style' => 'display:inline']) !!}
                           <button onclick="confirmdelete()" type="submit" class="btn btn-danger btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Hapus"><i class="ion-trash-b"></i> Hapus</button>
                         {!! Form::close() !!}
+                        @endif
                       </td>
                     </tr>
                   @endforeach
@@ -74,7 +78,7 @@
       "info":     false,
       dom: 'Bfrtip',
       buttons: [
-      @if (Sentinel::getUser()->hasAccess(['role.create']))
+      @if (Sentinel::getUser()->hasAccess(['surat-keluar.create']))
         {
             text: 'Tambah Surat Keluar',
             className: 'btn-success',

@@ -40,11 +40,17 @@
                       <td>{{$role->slug}}</td>
                       <td>{{$role->name}}</td>
                       <td class="text-right">
+                        @if (Sentinel::getUser()->hasAccess(['role.edit']))
                         <a href="{{route('role.edit',$role->id)}}" class="btn btn-primary btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Edit"><i class="ion-edit"></i> Edit</a>
+                        @endif
+                        @if (Sentinel::getUser()->hasAccess(['role.permissions']))
                         <a href="{{route('role.permissions',$role->id)}}" class="btn btn-success btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Detail"><i class="icofont icofont-animal-cat-alt-4"></i> Permission</a>
+                        @endif
+                        @if (Sentinel::getUser()->hasAccess(['role.destroy']))
                         {!! Form::open(['method'=>'DELETE', 'route' => ['role.destroy', $role->id], 'style' => 'display:inline']) !!}
                           <button onclick="confirmdelete()" type="submit" class="btn btn-danger btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Hapus"><i class="ion-trash-b"></i> Hapus</button>
                         {!! Form::close() !!}
+                        @endif
                       </td>
                     </tr>
                   @endforeach

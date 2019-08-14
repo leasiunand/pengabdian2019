@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use App\Models\keluar;
 use App\Models\surat;
+use App\user;
 
 class KeluarController extends Controller
 {
@@ -24,7 +25,9 @@ class KeluarController extends Controller
     public function show($id)
     {
         $keluar = keluar::find($id);
-        return view('backend.keluar.show',compact('keluar'));
+        $id = $keluar->surat->id;
+        $user = user::whereRaw("id not in (select user_id from disposisis where surat_id = $id)")->pluck('nama','id');
+        return view('backend.keluar.show',compact('keluar', 'user'));
     }
 
     public function store(Request $request)
@@ -37,7 +40,7 @@ class KeluarController extends Controller
           'nomor' => 'required|unique:surats,nomor',
           'tanggal_surat' => 'required',
           'perihal' => 'required',
-          'lampiran' => 'required',
+          // 'lampiran' => 'required',
           'file' => 'mimes:pdf',
           'penerima' => 'required',
         ]);
@@ -81,10 +84,10 @@ class KeluarController extends Controller
     public function update($id, Request $request)
     {
         $request->validate([
-          'nomor' => 'required|unique:surats,nomor',
+          'nomor' => 'required|unique:surats,nomor,'.$id,
           'tanggal_surat' => 'required',
           'perihal' => 'required',
-          'lampiran' => 'required',
+          // 'lampiran' => 'required',
           'file' => 'mimes:pdf',
           'penerima' => 'required',
         ]);

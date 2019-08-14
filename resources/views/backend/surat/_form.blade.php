@@ -22,13 +22,7 @@
     </div>
 </div>
 
-<div class="form-group row">
-    <label class="col-sm-2 col-form-label">Lampiran</label>
-    <div class="col-sm-10">
-        {!! Form::text('lampiran', null, ['class' => 'form-control', 'placeholder'=>'Lampiran']) !!}
-        <span class="messages popover-valid"></span>
-    </div>
-</div>
+<!--  -->
 
 <div class="form-group row">
     <label class="col-sm-2 col-form-label">File</label>

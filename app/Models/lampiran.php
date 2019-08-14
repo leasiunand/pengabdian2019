@@ -13,17 +13,20 @@ class lampiran extends Model
 
     protected $casts = [
       'surat_id' => 'integer',
+      'nama' => 'string',
       'file' => 'string',
     ];
 
     protected $fillable = [
       'surat_id',
+      'nama',
       'file',
     ];
 
     protected $rules = [
         'surat_id' => 'required',
         'file' => 'required',
+        'nama' => 'required',
     ];
 
     public function surat($value='')

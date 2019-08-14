@@ -18,7 +18,7 @@ class CreateSuratsTable extends Migration
             $table->string('nomor');
             $table->date('tanggal_surat');
             $table->string('perihal');
-            $table->string('lampiran');
+            // $table->string('lampiran');
             $table->string('file')->nullable();
             $table->timestamps();
         });

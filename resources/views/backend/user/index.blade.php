@@ -44,12 +44,18 @@
                       <td>{{$user->username}}</td>
                       <td>{{$user->roles()->first()->name}}</td>
                       <td class="text-right">
+                        @if (Sentinel::getUser()->hasAccess(['user.edit']))
                         <a href="{{route('user.edit',$user->id)}}" class="btn btn-primary btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Edit"><i class="ion-edit"></i> Edit</a>
+                        @endif
                         <a href="#" class="btn btn-primary btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Detail"><i class="ion-eye"></i> Detail</a>
+                        @if (Sentinel::getUser()->hasAccess(['user.permissions']))
                         <a href="{{route('user.permissions',$user->id)}}" class="btn btn-success btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Detail"><i class="icofont icofont-animal-cat-alt-4"></i> Permission</a>
+                        @endif
+                        @if (Sentinel::getUser()->hasAccess(['user.destroy']))
                         {!! Form::open(['method'=>'DELETE', 'route' => ['user.destroy', $user->id], 'style' => 'display:inline']) !!}
                           <button onclick="confirmdelete()" type="submit" class="btn btn-danger btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Hapus"><i class="ion-trash-b"></i> Hapus</button>
                         {!! Form::close() !!}
+                        @endif
                         <a href="#" data-toggle="modal" data-target="#{{$user->id}}" class="btn btn-inverse btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="QRCODE"><i class="fa fa-qrcode"></i> QRCode</a>
                         @if(sizeof($user->activations) == 0)
                           @if (Sentinel::getUser()->hasAccess(['user.activate']))

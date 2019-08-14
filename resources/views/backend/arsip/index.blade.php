@@ -39,12 +39,19 @@
                       <td>{{$arsip->nama}}</td>
                       <td>{{$arsip->user->nama}}</td>
                       <td>{{$arsip->arsip ? $arsip->arsip->nama :  'Master'}}</td>
-                      <td>{{$arsip->status}}</td>
+                      <td>@if($arsip->status==1) Umum @elseif($arsip->status==2)Rahasia @endif</td>
                       <td class="text-right">
+                        @if (Sentinel::getUser()->hasAccess(['arsip.show']))
+                        <a href="{{route('arsip.show',$arsip->id)}}" class="btn btn-primary btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Detail"><i class="ion-eye"></i> Detail</a>
+                        @endif
+                        @if (Sentinel::getUser()->hasAccess(['arsip.edit']) && $arsip->user_id==Sentinel::getUser()->id)
                         <a href="{{route('arsip.edit',$arsip->id)}}" class="btn btn-primary btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Edit"><i class="ion-edit"></i> Edit</a>
+                        @endif
+                        @if (Sentinel::getUser()->hasAccess(['arsip.destroy']) && $arsip->user_id==Sentinel::getUser()->id)
                         {!! Form::open(['method'=>'DELETE', 'route' => ['arsip.destroy',$arsip->id], 'style' => 'display:inline']) !!}
                           <button onclick="confirmdelete()" type="submit" class="btn btn-danger btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Hapus"><i class="ion-trash-b"></i> Hapus</button>
                         {!! Form::close() !!}
+                        @endif
                       </td>
                     </tr>
                   @endforeach

@@ -22,7 +22,7 @@
           <div class="form-group row">
               <label class="col-sm-2 social-label b-none p-t-0">Arsip Master</label>
               <div class="col-sm-10">
-                  {!! Form::select('arsip_id', $master ,null,['class' => 'js-example-basic-single', 'placeholder'=>'Arsip Master']) !!}
+                  {!! Form::select('arsip_id', $master ,null,['class' => 'js-example-basic-single']) !!}
                   <span class="messages popover-valid"></span>
               </div>
           </div>
