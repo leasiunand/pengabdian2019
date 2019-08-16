@@ -16,6 +16,7 @@ class CreateLampiransTable extends Migration
         Schema::create('lampirans', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('surat_id')->unsigned();
+            $table->string('nama');
             $table->string('file');
             $table->timestamps();
 

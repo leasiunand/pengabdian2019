@@ -1,26 +1,27 @@
 @extends('layouts.blank')
 
 @section('title')
-  Create Surat Keluar
+  Arsip Surat
 @stop
 
 @section('title-breadcrumb')
-  Create Surat Keluar
+  Arsip Surat
 @stop
 
 @section('icon-breadcrumb')
-    <li class="breadcrumb-item"><a href="{{route('surat-keluar.index')}}">Surat Keluar</a></li>
-    <li class="breadcrumb-item"><a href="{{route('surat-keluar.create')}}">Create</a></li>
+    <li class="breadcrumb-item"><a href="{{route('arsip.show',$arsip_id)}}">Arsip</a></li>
+    <li class="breadcrumb-item"><a href="#">Create</a></li>
 @stop
 
 @section('content')
 <div class="col-sm-12">
   <div class="card">
     <div class="card-block">
-      {{ Form::open(array('url' => route('surat-keluar.store'), 'files' => true,'data-parsley-validate','id'=>'demo-form2')) }}
+      {{ Form::open(array('url' => route('arsip-surat.store'), 'files' => true,'data-parsley-validate','id'=>'demo-form2')) }}
 
-          @include('backend.surat._form')
-          @include('backend.keluar._form')
+          <input type="hidden" name="arsip_id" value="{{$arsip_id}}">
+
+          @include('backend.arsip-surat._form')
 
           <div class="row">
               <div class="col-sm-12 text-center">

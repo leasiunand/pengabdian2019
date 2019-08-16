@@ -1,26 +1,28 @@
 @extends('layouts.blank')
 
 @section('title')
-  Create Surat Keluar
+  Edit {{$lampiran->nama}}
 @stop
 
 @section('title-breadcrumb')
-  Create Surat Keluar
+  Edit {{$lampiran->nama}}
+@stop
+
+@section('keterangan-breadcrumb')
 @stop
 
 @section('icon-breadcrumb')
-    <li class="breadcrumb-item"><a href="{{route('surat-keluar.index')}}">Surat Keluar</a></li>
-    <li class="breadcrumb-item"><a href="{{route('surat-keluar.create')}}">Create</a></li>
+    <li class="breadcrumb-item"><a href="#">Lampiran</a></li>
+    <li class="breadcrumb-item"><a href="#!">Edit</a></li>
 @stop
 
 @section('content')
 <div class="col-sm-12">
   <div class="card">
     <div class="card-block">
-      {{ Form::open(array('url' => route('surat-keluar.store'), 'files' => true,'data-parsley-validate','id'=>'demo-form2')) }}
+      {{ Form::model($lampiran, array('method' => 'PATCH', 'url' => route('lampiran.update', $lampiran->id), 'class' => 'form-horizontal form-label-left', 'files' => true,'data-parsley-validate','id'=>'demo-form2')) }}
 
-          @include('backend.surat._form')
-          @include('backend.keluar._form')
+          @include('backend.lampiran._form')
 
           <div class="row">
               <div class="col-sm-12 text-center">

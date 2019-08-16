@@ -39,9 +39,9 @@ Route::group(['middleware' => ['web', 'auth', 'permission'] ], function () {
   Route::resource('surat-keluar','KeluarController');
   Route::resource('surat-masuk','MasukController');
   Route::resource('arsip','ArsipController');
-  Route::resource('arsip-surat','ArsipSuratController');
-  Route::resource('disposisi','DisposisiController');
-  Route::resource('lampiran','LampiranController');
+  Route::resource('arsip-surat','ArsipSuratController')->except(['index','show']);
+  Route::resource('disposisi','DisposisiController')->except(['index','show','create','edit','update']);
+  Route::resource('lampiran','LampiranController')->except(['index','show']);
 });
 
 Route::get('img/{type}/{file_id}','imgController@image');

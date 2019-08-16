@@ -27,6 +27,9 @@ class imgController extends Controller
         if($tipe=='keluar'){
           $path = 'surat-keluar';
         }
+        else if($tipe=='lampiran'){
+          $path = 'lampirans';
+        }
 
         $lokasi = $path . '/' . $id;
         $dir = storage_path('app/' . $lokasi);

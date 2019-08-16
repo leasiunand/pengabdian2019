@@ -33,6 +33,6 @@ class disposisi extends Model
 
     public function user($value='')
     {
-        return $this->hasOne(user::class,'id','user_id');
+        return $this->hasOne('App\user','id','user_id');
     }
 }

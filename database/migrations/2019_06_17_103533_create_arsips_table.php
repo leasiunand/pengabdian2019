@@ -17,7 +17,7 @@ class CreateArsipsTable extends Migration
             $table->increments('id');
             $table->string('nama');
             $table->integer('user_id')->unsigned(); //pemilik
-            $table->integer('arsip_id')->unsigned();
+            $table->integer('arsip_id')->unsigned()->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();
 
