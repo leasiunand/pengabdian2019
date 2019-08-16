@@ -23,6 +23,14 @@ class MasukController extends Controller
         return view('backend.masuk.create',compact('user'));
     }
 
+    public function show($id)
+    {
+        $masuk = masuk::find($id);
+        $id = $masuk->surat->id;
+        $user = user::whereRaw("id not in (select user_id from disposisis where surat_id = $id)")->pluck('nama','id');
+        return view('backend.masuk.show',compact('masuk', 'user'));
+    }
+
     public function store(Request $request){
 
         $surat = new surat;
@@ -33,7 +41,7 @@ class MasukController extends Controller
           'nomor' => 'required|unique:surats,nomor',
           'tanggal_surat' => 'required',
           'perihal' => 'required',
-          'lampiran' => 'required',
+         // 'lampiran' => 'required',
           'file' => 'mimes:pdf',
           'pengirim' => 'required',
         ]);
@@ -96,7 +104,7 @@ class MasukController extends Controller
         'nomor' => 'required|unique:surats,nomor',
         'tanggal_surat' => 'required',
         'perihal' => 'required',
-        'lampiran' => 'required',
+       // 'lampiran' => 'required',
         'file' => 'mimes:pdf',
         'pengirim' => 'required',
       ]);

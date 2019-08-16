@@ -41,6 +41,7 @@
                       <td class="text-right">
                         <a target="_blank" href="{{url('surat/masuk/'.$masuk->surat->file)}}" class="btn btn-primary btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Edit"><i class="ion-android-download"></i> Download</a>
                         <a href="{{route('surat-masuk.edit',$masuk->id)}}" class="btn btn-primary btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Edit"><i class="ion-edit"></i> Edit</a>
+                        <a href="{{route('surat-masuk.show',$masuk->id)}}" class="btn btn-primary btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Edit"><i class="ion-eye"></i> Detail</a>
                         {!! Form::open(['method'=>'DELETE', 'route' => ['surat-masuk.destroy',$masuk->id], 'style' => 'display:inline']) !!}
                           <button onclick="confirmdelete()" type="submit" class="btn btn-danger btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Hapus"><i class="ion-trash-b"></i> Hapus</button>
                         {!! Form::close() !!}
