@@ -19,14 +19,14 @@ class MasukController extends Controller
     }
 
     public function create(){
-        
+        $user = User::pluck('nama','id');
         return view('backend.masuk.create',compact('user'));
     }
 
     public function show($id)
     {
-        $masuk = masuk::find($id);
-        $id = $masuk->surat->id;
+        $masuk = masuk::where('surat_id',$id)->first();
+      
         $user = user::whereRaw("id not in (select user_id from disposisis where surat_id = $id)")->pluck('nama','id');
         return view('backend.masuk.show',compact('masuk', 'user'));
     }
@@ -94,8 +94,9 @@ class MasukController extends Controller
     }
 
     public function edit($id){
+      $user = User::pluck('nama','id');
       $surat_masuk = masuk::select('*')->join('surats','masuks.surat_id','=','surats.id')->where('masuks.id',$id)->first();
-      return view('backend.masuk.edit',compact('surat_masuk'));
+      return view('backend.masuk.edit',compact('surat_masuk','user'));
     }
 
     public function update($id,Request $request){

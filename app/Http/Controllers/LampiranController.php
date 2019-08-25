@@ -32,6 +32,7 @@ class LampiranController extends Controller
         $lampiran = new lampiran;
         $data = $request->all();
 
+
         $request->validate([
           'file' => 'mimes:pdf',
         ]);

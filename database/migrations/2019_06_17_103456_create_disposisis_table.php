@@ -17,6 +17,7 @@ class CreateDisposisisTable extends Migration
             $table->increments('id');
             $table->integer('surat_id')->unsigned();
             $table->integer('user_id')->unsigned();
+            $table->longText('catatan');
             $table->timestamps();
 
             $table->foreign('surat_id')->references('id')->on('surats')->onUpdate('cascade');

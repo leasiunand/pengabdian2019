@@ -40,7 +40,7 @@ Route::group(['middleware' => ['web', 'auth', 'permission'] ], function () {
   Route::resource('surat-masuk','MasukController');
   Route::resource('arsip','ArsipController');
   Route::resource('arsip-surat','ArsipSuratController')->except(['index','show']);
-  Route::resource('disposisi','DisposisiController')->except(['index','show','create','edit','update']);
+  Route::resource('disposisi','DisposisiController')->except(['index','show','edit','update']);
   Route::resource('lampiran','LampiranController')->except(['index','show']);
 });
 

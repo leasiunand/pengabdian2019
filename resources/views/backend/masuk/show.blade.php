@@ -125,9 +125,6 @@
   <div class="text-center">
     <a href="#" onclick="{{route('surat-masuk.index')}}" class="btn btn-primary waves-effect waves-light">Back</a>
   </div>
-
- 
-
 </div>
 @stop
 
@@ -161,7 +158,7 @@
             className: 'btn-success',
             action: function(e, dt, node, config)
             {
-              window.location.assign('{{route("lampiran.create")}}?surat_id={{$masuk->id}}');
+              window.location.assign('{{route("lampiran.create")}}?surat_id={{$masuk->surat_id}}');
             }
         },
       @endif
@@ -207,7 +204,7 @@
             action: function(e, dt, node, config)
             {
               $('#create-disposisi').modal('toggle');
-              // window.location.assign('{{route("lampiran.create")}}?surat_id={{$masuk->id}}');
+               window.location.assign('{{route("disposisi.create")}}?surat_id={{$masuk->surat_id}}');
             }
         },
       @endif
