@@ -98,6 +98,7 @@
                 <tr>
                   <th style="width:20px">No</th>
                   <th>Nama</th>
+                  <th>Catatan</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
@@ -107,6 +108,7 @@
                 <tr>
                   <td class="text-center">{{$no++}}</td>
                   <td>{{$disposisi->user->nama}}</td>
+                  <td>{{$disposisi->catatan}}</td>
                   <td>
                     @if (Sentinel::getUser()->hasAccess(['disposisi.destroy']))
                     {!! Form::open(['method'=>'DELETE', 'route' => ['disposisi.destroy',$disposisi->id], 'style' => 'display:inline']) !!}

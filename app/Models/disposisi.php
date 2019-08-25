@@ -19,6 +19,7 @@ class disposisi extends Model
     protected $fillable = [
       'surat_id',
       'user_id',
+      'catatan'
     ];
 
     protected $rules = [
