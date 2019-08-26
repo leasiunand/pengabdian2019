@@ -181,7 +181,7 @@
             className: 'btn-success',
             action: function(e, dt, node, config)
             {
-              window.location.assign('{{route("lampiran.create")}}?surat_id={{$keluar->id}}');
+              window.location.assign('{{route("lampiran.create")}}?surat_id={{$keluar->surat_id}}');
             }
         },
       @endif

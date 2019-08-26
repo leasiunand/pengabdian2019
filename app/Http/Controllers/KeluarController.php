@@ -22,9 +22,9 @@ class KeluarController extends Controller
         return view('backend.keluar.create');
     }
 
-    public function show($id)
+    public function show($surat_id)
     {
-        $keluar = keluar::find($id);
+        $keluar = keluar::where('surat_id',$surat_id)->first();
         $id = $keluar->surat->id;
         $user = user::whereRaw("id not in (select user_id from disposisis where surat_id = $id)")->pluck('nama','id');
         return view('backend.keluar.show',compact('keluar', 'user'));

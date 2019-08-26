@@ -93,7 +93,7 @@
       </div>
       <div class="card-block">
         <div class="dt-responsive table-responsive" cellpadding="10">
-            <table id="tbldisposisi" class="table table-striped table-bordered nowrap" style="width:100%">
+            <table id="tbldisposisi" class="table table-striped table-bordered nowrap table-layout: fixed" style="width:100%">
               <thead>
                 <tr>
                   <th style="width:20px">No</th>
