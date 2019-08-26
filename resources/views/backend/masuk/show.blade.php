@@ -93,11 +93,12 @@
       </div>
       <div class="card-block">
         <div class="dt-responsive table-responsive" cellpadding="10">
-            <table id="tbldisposisi" class="table table-striped table-bordered nowrap" style="width:100%">
+            <table id="tbldisposisi" class="table table-striped table-bordered nowrap table-layout: fixed" style="width:100%">
               <thead>
                 <tr>
                   <th style="width:20px">No</th>
                   <th>Nama</th>
+                  <th>Catatan</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
@@ -107,6 +108,7 @@
                 <tr>
                   <td class="text-center">{{$no++}}</td>
                   <td>{{$disposisi->user->nama}}</td>
+                  <td>{{$disposisi->catatan}}</td>
                   <td>
                     @if (Sentinel::getUser()->hasAccess(['disposisi.destroy']))
                     {!! Form::open(['method'=>'DELETE', 'route' => ['disposisi.destroy',$disposisi->id], 'style' => 'display:inline']) !!}
@@ -125,9 +127,6 @@
   <div class="text-center">
     <a href="#" onclick="{{route('surat-masuk.index')}}" class="btn btn-primary waves-effect waves-light">Back</a>
   </div>
-
- 
-
 </div>
 @stop
 
@@ -161,7 +160,7 @@
             className: 'btn-success',
             action: function(e, dt, node, config)
             {
-              window.location.assign('{{route("lampiran.create")}}?surat_id={{$masuk->id}}');
+              window.location.assign('{{route("lampiran.create")}}?surat_id={{$masuk->surat_id}}');
             }
         },
       @endif
@@ -207,7 +206,7 @@
             action: function(e, dt, node, config)
             {
               $('#create-disposisi').modal('toggle');
-              // window.location.assign('{{route("lampiran.create")}}?surat_id={{$masuk->id}}');
+               window.location.assign('{{route("disposisi.create")}}?surat_id={{$masuk->surat_id}}');
             }
         },
       @endif

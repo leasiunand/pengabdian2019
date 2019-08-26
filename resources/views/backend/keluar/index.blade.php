@@ -44,7 +44,7 @@
                         <a href="{{route('surat-keluar.edit',$keluar->id)}}" class="btn btn-primary btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Edit"><i class="ion-edit"></i> Edit</a>
                         @endif
                         @if (Sentinel::getUser()->hasAccess(['surat-keluar.show']))
-                        <a href="{{route('surat-keluar.show',$keluar->id)}}" class="btn btn-primary btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Edit"><i class="ion-eye"></i> Detail</a>
+                        <a href="{{route('surat-keluar.show',$keluar->surat_id)}}" class="btn btn-primary btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Edit"><i class="ion-eye"></i> Detail</a>
                         @endif
                         @if (Sentinel::getUser()->hasAccess(['surat-keluar.destroy']))
                         {!! Form::open(['method'=>'DELETE', 'route' => ['surat-keluar.destroy',$keluar->id], 'style' => 'display:inline']) !!}
