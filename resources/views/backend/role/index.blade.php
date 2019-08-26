@@ -66,29 +66,12 @@
 <script type="text/javascript">
 
     function confirmdelete() {
-      if(confirm("Yakin Menghapus User Iko COY!!!?")==true){
+      if(confirm("Yakin Menghapus Role ini??")==true){
         return true;
       }else{
         event.preventDefault();
       }
     }
-
-    function confirmaktivasi() {
-      if(confirm("Yakin Meng-aktivkan User Iko COY!!!?")==true){
-        return true;
-      }else{
-        event.preventDefault();
-      }
-    }
-
-    function confirmdeaktivasi() {
-      if(confirm("Yakin Meng-Nonaktivkan User Iko COY!!!?")==true){
-        return true;
-      }else{
-        event.preventDefault();
-      }
-    }
-
 
     $('#tblrole').DataTable(
       {

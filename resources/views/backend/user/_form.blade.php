@@ -63,7 +63,7 @@
               <input id="avatar" type="file" name="avatar" onchange="document.getElementById('tavatar').value = this.value;" style="display:none">
               <span class="">Upload</span>
           </span>
-          <input onclick="document.getElementById('avatar').click()" id="tavatar" type="text" class="form-control" placeholder="Upload Foto yang Rancak Disiko">
+          <input onclick="document.getElementById('avatar').click()" id="tavatar" type="text" class="form-control" placeholder="Upload Foto">
       </div>
       <span class="messages popover-valid"></span>
     </div>

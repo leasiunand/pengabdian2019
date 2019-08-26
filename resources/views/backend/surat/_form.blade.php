@@ -32,7 +32,7 @@
               <input id="file" type="file" name="file" onchange="document.getElementById('tfile').value = this.value;" style="display:none">
               <span class="">Upload</span>
           </span>
-          <input onclick="document.getElementById('file').click()" id="tfile" type="text" class="form-control" placeholder="Upload Foto yang Rancak Disiko">
+          <input onclick="document.getElementById('file').click()" id="tfile" type="text" class="form-control" placeholder="Upload File">
       </div>
       <span class="messages popover-valid"></span>
     </div>
