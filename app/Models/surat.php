@@ -45,4 +45,16 @@ class surat extends Model
         return $this->hasMany(disposisi::class,'surat_id','id');
     }
 
+    public function masuk(){
+      return $this->hasOne(masuk::class,'surat_id','id');
+    }
+
+    public function keluar(){
+      return $this->hasOne(keluar::class,'surat_id','id');
+    }
+
+    
+
+
+
 }

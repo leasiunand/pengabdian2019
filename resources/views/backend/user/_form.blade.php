@@ -7,9 +7,9 @@
 </div>
 
 <div class="form-group row">
-    <label class="col-sm-2 col-form-label">Nomor Induk Mahasiswa</label>
+    <label class="col-sm-2 col-form-label">Nomor Induk Pegawai</label>
     <div class="col-sm-10">
-        {!! Form::text('nim', null, ['class' => 'form-control', 'placeholder'=>'Nomor Induk Mahasiswa']) !!}
+        {!! Form::text('nim', null, ['class' => 'form-control', 'placeholder'=>'Nomor Induk Pegawai']) !!}
         <span class="messages popover-valid"></span>
     </div>
 </div>
