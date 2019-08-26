@@ -1,7 +1,7 @@
 @extends('layouts.blank')
 
 @section('title')
-  Create Profil
+  Tambah User
 @stop
 
 @section('title-breadcrumb')
@@ -9,7 +9,6 @@
 @stop
 
 @section('keterangan-breadcrumb')
-  bla bla bla
 @stop
 
 @section('icon-breadcrumb')

@@ -20,8 +20,9 @@
                   <td>{{$arsu->surat->tanggal_surat->format('d M Y')}}</td>
                   <td>{{$arsu->tanggal->format('d M Y')}}</td>
                   <td class="text-right">
-                    <a target="_blank" href="{{url('surat/keluar/'.$arsu->surat->file)}}" class="btn btn-primary btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Edit"><i class="ion-android-download"></i> Download</a>
-                    <a href="{{route('surat-keluar.show',$arsu->surat->id)}}" class="btn btn-primary btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Detail"><i class="ion-eye"></i> Detail</a>
+                    <a target="_blank" href="{{$arsu->surat->masuk ? url('surat/masuk/'.$arsu->surat->file) : url('surat/keluar/'.$arsu->surat->file) }}" class="btn btn-primary btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Edit"><i class="ion-android-download"></i> Download</a>
+
+                    <a href="{{$arsu->surat->masuk ? route('surat-masuk.show',$arsu->surat->id) : route('surat-keluar.show',$arsu->surat->id)}}" class="btn btn-primary btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Detail"><i class="ion-eye"></i> Detail</a>
                     @if (Sentinel::getUser()->hasAccess(['arsip-surat.edit']) && $arsip->user_id==Sentinel::getUser()->id)
                     <a href="{{route('arsip-surat.edit',$arsu->id)}}" class="btn btn-primary btn-mini waves-effect waves-light" data-toggle="tooltip" data-placement="left" title="Edit"><i class="ion-edit"></i> Edit</a>
                     @endif
