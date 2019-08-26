@@ -92,7 +92,7 @@
 <script type="text/javascript">
 
     function confirmdelete() {
-      if(confirm("Yakin Menghapus User Iko COY!!!?")==true){
+      if(confirm("Yakin Menghapus User Ini?")==true){
         return true;
       }else{
         event.preventDefault();
@@ -100,7 +100,7 @@
     }
 
     function confirmaktivasi() {
-      if(confirm("Yakin Meng-aktivkan User Iko COY!!!?")==true){
+      if(confirm("Yakin Meng-aktivkan User Ini!!!?")==true){
         return true;
       }else{
         event.preventDefault();
@@ -108,7 +108,7 @@
     }
 
     function confirmdeaktivasi() {
-      if(confirm("Yakin Meng-Nonaktivkan User Iko COY!!!?")==true){
+      if(confirm("Yakin Meng-Nonaktivkan User Ini!!!?")==true){
         return true;
       }else{
         event.preventDefault();
@@ -135,28 +135,28 @@
           extend: 'copy',
           className: 'btn-inverse',
           exportOptions: {
-              columns: [0, 1, 2]
+              columns: [0, 1, 2, 3, 4]
           }
       },
       {
           extend: 'print',
           className: 'btn-inverse',
           exportOptions: {
-              columns: [0, 1, 2]
+              columns: [0, 1, 2, 3, 4]
           }
       },
       {
           extend: 'excel',
           className: 'btn-inverse',
           exportOptions: {
-              columns: [0, 1, 2]
+              columns: [0, 1, 2, 3, 4]
           }
       },
       {
           extend: 'pdf',
           className: 'btn-inverse',
           exportOptions: {
-              columns: [0, 1, 2]
+              columns: [0, 1, 2, 3, 4]
           }
       }]
     });

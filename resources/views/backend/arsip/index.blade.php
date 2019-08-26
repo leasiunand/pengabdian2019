@@ -93,28 +93,28 @@
           extend: 'copy',
           className: 'btn-inverse',
           exportOptions: {
-              columns: [0, 1, 2, 3]
+              columns: [0, 1, 2, 3, 4]
           }
       },
       {
           extend: 'print',
           className: 'btn-inverse',
           exportOptions: {
-              columns: [0, 1, 2, 3]
+              columns: [0, 1, 2, 3, 4]
           }
       },
       {
           extend: 'excel',
           className: 'btn-inverse',
           exportOptions: {
-              columns: [0, 1, 2, 3]
+              columns: [0, 1, 2, 3, 4]
           }
       },
       {
           extend: 'pdf',
           className: 'btn-inverse',
           exportOptions: {
-              columns: [0, 1, 2, 3]
+              columns: [0, 1, 2, 3, 4]
           }
       }]
     });
