@@ -42,7 +42,7 @@
               </li>
             @endif
             @if (Sentinel::getUser()->hasAnyAccess(['surat-keluar.index']))
-              <li class="pcoded-hasmenu " dropdown-icon="style1" subitem-icon="style1">
+              <li class="pcoded-hasmenu pcoded-trigger " dropdown-icon="style1" subitem-icon="style1">
                 <a href="javascript:void(0)">
                     <span class="pcoded-micon"><i class="icofont icofont-letter"></i></span>
                     <span class="pcoded-mtext">Surat</span>
