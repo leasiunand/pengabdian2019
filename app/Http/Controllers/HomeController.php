@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\masuk;
+use App\Models\keluar;
+use App\Models\surat;
+
 
 class HomeController extends Controller
 {
@@ -14,7 +18,11 @@ class HomeController extends Controller
 
     public function dashboard($value='')
     {
-      return view('dashboard');
+   		$masuk = masuk::all()->count();
+   		$keluar = keluar::all()->count();
+
+   		$surat = surat::all();
+      return view('dashboard',compact('masuk','keluar','surat'));
     }
 
 }

@@ -66,18 +66,11 @@ class MasukController extends Controller
           if($surat->id){
             $user = User::find(Sentinel::getuser()->id);
             try {
-                // $masuk = masuk::create(['surat_id'=> $surat->id,
-                //           'user_id' => $user->id,
-                //           'pengirim' => $data->pengirim,
-                //           ]);
-
                 $masuk = new masuk();
                 $masuk->surat_id = $surat->id;  
                 $masuk->user_id = $user->id;
                 $masuk->pengirim = $user->nama;
                 $masuk->save();
-                
-
                 toast()->success('Berhasil Menyimpan Data Surat Masuk', 'Berhasil');
                 return redirect()->route('surat-masuk.index');          
             } catch (\Exception $e) {
@@ -102,10 +95,9 @@ class MasukController extends Controller
     public function update($id,Request $request){
       
       $request->validate([
-        'nomor' => 'required|unique:surats,nomor',
+        'nomor' => 'required',
         'tanggal_surat' => 'required',
         'perihal' => 'required',
-       // 'lampiran' => 'required',
         'file' => 'mimes:pdf',
         'pengirim' => 'required',
       ]);
